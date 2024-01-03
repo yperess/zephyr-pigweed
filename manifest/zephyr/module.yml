@@ -1,0 +1,13 @@
+# Copyright (c) 2024 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+name: zephyr-pigweed
+
+build:
+  # Path to the Kconfig file that will be sourced into Zephyr Kconfig tree under
+  # Zephyr > Modules > {module_name}. Path is relative from where the west.yml
+  # file is located.
+  kconfig: ../Kconfig
+  # Path to the folder that contains the CMakeLists.txt file to be included by
+  # Zephyr build system. The `../` is the root of this repository.
+  cmake: ../

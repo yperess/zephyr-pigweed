@@ -1,0 +1,17 @@
+# Copyright (c) 2023 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+# West directory
+.west/
+
+# IDE specific
+.idea/
+
+# Checked out by West
+bootloader/
+modules/
+third_party/
+tools/
+
+# Build artifacts
+build/
