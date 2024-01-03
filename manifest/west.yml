@@ -1,0 +1,23 @@
+# Copyright (c) 2023 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+manifest:
+  remotes:
+    # This codelab uses the upstream Zephyr and Pigweed projects, your project
+    # might use a different fork or mirror.
+    - name: zephyr
+      url-base: https://github.com/zephyrproject-rtos
+    - name: pigweed
+      url-base: https://pigweed.googlesource.com/pigweed
+  projects:
+    # Pigweed runs CI against the latest 3.5 branch of Zephyr, so we'll use that
+    # one because we know it will work.
+    - name: zephyr
+      remote: zephyr
+      revision: main
+      path: third_party/zephyr
+      import: true
+    - name: pigweed
+      remote: pigweed
+      revision: main
+      path: third_party/pigweed

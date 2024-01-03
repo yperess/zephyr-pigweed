@@ -1,0 +1,26 @@
+# Copyright (c) 2023 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+tests:
+  app.hello:
+    tags: logging
+    timeout: 5
+    integration_platforms:
+      - qemu_cortex_a53
+    harness: console
+    harness_config:
+      type: one_line
+      regex:
+        - "<inf> pigweed:  Hello \\w+"
+  app.hello.native_sim:
+    tags: logging
+    timeout: 5
+    integration_platforms:
+      - native_sim
+    harness: console
+    harness_config:
+      type: one_line
+      regex:
+        - "<inf> pigweed:  Hello native_sim"
+    extra_args:
+      - ZEPHYR_TOOLCHAIN_VARIANT=llvm
