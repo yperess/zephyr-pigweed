@@ -23,5 +23,5 @@ $ ZEPHYR_TOOLCHAIN_VARIANT=zephyr west build -p -b qemu_cortex_a53 -t run app
 ## Testing
 
 ```shell
-$ west twister -cviG -T app
+$ west twister -cvi -p native_sim -p qemu_cortex_a53 -T app
 ```
