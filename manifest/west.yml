@@ -8,7 +8,7 @@ manifest:
     - name: zephyr
       url-base: https://github.com/zephyrproject-rtos
     - name: pigweed
-      url-base: https://pigweed.googlesource.com/pigweed
+      url-base: https://github.com/google/
   projects:
     # Pigweed runs CI against the latest 3.5 branch of Zephyr, so we'll use that
     # one because we know it will work.
