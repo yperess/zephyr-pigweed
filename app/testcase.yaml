@@ -19,3 +19,12 @@ tests:
     extra_configs:
       - CONFIG_TEST=y
       - CONFIG_PIGWEED_LOG_ZEPHYR=y
+  app.hello.unittest.robot:
+    platform_allow:
+      - renode_cortex_a53
+    extra_configs:
+      - CONFIG_TEST=y
+      - CONFIG_PIGWEED_LOG_ZEPHYR=y
+    harness: robot
+    harness_config:
+      robot_test_path: test/test.robot

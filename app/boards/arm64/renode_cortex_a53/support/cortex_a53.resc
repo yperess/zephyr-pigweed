@@ -1,9 +1,6 @@
 using sysbus
 
 mach create "Cortex A53"
-
-$bin?=$ORIGIN/../build/zephyr/zephyr.elf
-
 machine LoadPlatformDescription @platforms/cpus/cortex-a53-gicv3.repl
 
 showAnalyzer uart0

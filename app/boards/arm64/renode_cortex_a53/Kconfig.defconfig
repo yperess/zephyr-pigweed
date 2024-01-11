@@ -1,0 +1,16 @@
+if BOARD_RENODE_CORTEX_A53
+
+config BUILD_OUTPUT_BIN
+	default y
+
+config BOARD
+	default "renode_cortex_a53"
+
+config MAX_THREAD_BYTES
+	default 3
+
+choice ARM64_PA_BITS
+	default ARM64_PA_BITS_40 if PCIE
+endchoice
+
+endif # BOARD_RENODE_CORTEX_A53
