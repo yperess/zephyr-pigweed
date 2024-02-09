@@ -9,6 +9,6 @@
 
 namespace app {
 void WelcomeMessage(::pw::StringBuilder& buffer,
-                    const ::pw::InlineString<>& greeting,
-                    const ::pw::InlineString<>& name);
+                    std::string_view greeting,
+                    std::string_view name);
 }  // namespace app
