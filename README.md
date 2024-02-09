@@ -108,3 +108,27 @@ platform_allow:
 ```
 
 We can now run the tests again via the same `west twister ...` command as before and see the new runs.
+
+# Embedded C++101
+
+## Overview of String libraries
+This exercise demonstrates the use of some of Pigweed's utilities for string manipulation. We've already seen a preview
+of this via the `pw::StringBuilder` and `pw::InlineString` classes.
+
+> See https://pigweed.dev/pw_string/ for reference.
+
+### Using `std::string_view`
+If your function doesn't need to modify or store the content of the string, it should accept
+`std::string_view` (passed by value). This approach is better than using `std::string` or
+`const std::string&` as it avoids copying the data. It is effectively the same as passing a safe
+version of `(const char *str, size_t size)`. It is important to note that `std::string_view` is not
+inherently NULL terminated.
+
+### Exercise
+
+#### Using `std::string_view`
+Edit `hello.h` to accept `std::string_view` for both the `greeting` and the `name` rather than
+`const pw::InlineString<>&` and update `hello.cc` to match. Confirm that your tests still pass.
+
+### Extending tests
+Add more tests to verify that the greeting has both `greeting` and `name`.
