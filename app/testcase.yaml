@@ -1,0 +1,12 @@
+# Copyright (c) 2024 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+tests:
+  app.hello:
+    timeout: 60
+    platform_allow:
+      - native_sim
+    harness: gtest
+    extra_configs:
+      - CONFIG_PIGWEED_LOG_ZEPHYR=y
+      - CONFIG_TEST=y

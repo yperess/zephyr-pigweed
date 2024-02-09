@@ -83,3 +83,16 @@ We can run this application via:
 ```shell
 $ west build -p -b native_sim -t run app/
 ```
+
+## Adding tests
+Side by side with the code, we're going to add a `test_hello.cc` which will get compiled via the CMake function
+`pw_add_test()` and linked into `app` by adding `hello_world.test.lib` as a dependency. The test uses gTest APIs
+to verify the behavior of `app::WelcomeMessage()`.
+
+### Run the test
+```shell
+$ west twister -cvi -T app/
+```
+
+At this point the test should pass, but if you look closely at the implementation, it's clearly
+flawed. We'll fix it later in the Embedded C++101 section below.

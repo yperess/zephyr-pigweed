@@ -14,3 +14,10 @@ pw_add_library(hello_world STATIC
     pw_string
     zephyr_interface
 )
+
+pw_add_test(hello_world.test
+  SOURCES
+    src/test_hello.cc
+  PRIVATE_DEPS
+    hello_world
+)
