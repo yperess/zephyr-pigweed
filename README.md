@@ -96,3 +96,15 @@ $ west twister -cvi -T app/
 
 At this point the test should pass, but if you look closely at the implementation, it's clearly
 flawed. We'll fix it later in the Embedded C++101 section below.
+
+## Testing on more targets
+Zephyr comes with several QEMU targets. To run our tests against them, we don't need to change anything except for
+adding the new targets to the `testcase.yaml` file:
+
+```yaml
+platform_allow:
+  - qemu_riscv64
+  - qemu_cortex_a53
+```
+
+We can now run the tests again via the same `west twister ...` command as before and see the new runs.
