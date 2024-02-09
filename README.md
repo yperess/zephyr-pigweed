@@ -12,16 +12,21 @@ $ pip install -r third_party/zephyr/scripts/requirements.txt
 
 ### native_sim
 ```shell
-$ ZEPHYR_TOOLCHAIN_VARIANT=llvm west build -p -b native_sim -t run app
+$ west build -p -b native_sim -t run app
 ```
 
 ### qemu_cortex_a53
 ```shell
-$ ZEPHYR_TOOLCHAIN_VARIANT=zephyr west build -p -b qemu_cortex_a53 -t run app
+$ west build -p -b qemu_cortex_a53 -t run app
+```
+
+### renode
+```shell
+$ west build -p -b renode_cortex_a53 -t run app -- -DBOARD_ROOT="."
 ```
 
 ## Testing
 
 ```shell
-$ west twister -cvi -p native_sim -p qemu_cortex_a53 -T app
+$ west twister -cvi -A app/boards -x="BOARD_ROOT=." -T app/
 ```

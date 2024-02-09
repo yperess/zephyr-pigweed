@@ -3,10 +3,9 @@ using sysbus
 mach create "Cortex A53"
 machine LoadPlatformDescription @platforms/cpus/cortex-a53-gicv3.repl
 
-showAnalyzer uart0
-
 macro reset
 """
+    showAnalyzer uart0 Antmicro.Renode.Analyzers.LoggingUartAnalyzer
     sysbus LoadELF $bin
 """
 

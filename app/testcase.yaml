@@ -3,28 +3,12 @@
 
 tests:
   app.hello.unittest:
-    timeout: 5
+    timeout: 60
     platform_allow:
       - native_sim
-    harness: gtest
-    extra_configs:
-      - CONFIG_TEST=y
-      - CONFIG_PIGWEED_LOG_ZEPHYR=y
-    extra_args:
-      - ZEPHYR_TOOLCHAIN_VARIANT=llvm
-  app.hello.other:
-    platform_allow:
       - qemu_cortex_a53
+      - renode_cortex_a53
     harness: gtest
     extra_configs:
       - CONFIG_TEST=y
       - CONFIG_PIGWEED_LOG_ZEPHYR=y
-  app.hello.unittest.robot:
-    platform_allow:
-      - renode_cortex_a53
-    extra_configs:
-      - CONFIG_TEST=y
-      - CONFIG_PIGWEED_LOG_ZEPHYR=y
-    harness: robot
-    harness_config:
-      robot_test_path: test/test.robot
