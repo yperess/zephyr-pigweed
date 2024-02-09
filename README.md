@@ -40,3 +40,46 @@ build:
   # Zephyr build system. The `../` is the root of this repository.
   cmake: ../
 ```
+
+## Application code
+
+### The `hello_world` library
+We're now ready for the application code. We'll start by creating a library under `lib/`. Normally, under Zephyr this
+would look like:
+
+```cmake
+zephyr_library_named(hello_world)
+zephyr_library_sources(include/hello.h src/hello.cc)
+# Can't use zephyr_library_include_directories() because it makes the dirs PRIVATE
+target_include_directories(hello_world PUBLIC include)
+# Can't use zephyr_library_link_libraries() because it makes the libraries PRIVATE
+target_link_libraries(hello_world PUBLIC pw_string)
+```
+
+Instead, we're able to leverage Pigweed's build tooling and create:
+
+```cmake
+include($ENV{PW_ROOT}/pw_build/pigweed.cmake)
+
+pw_add_library(hello_world STATIC
+  HEADERS
+    include/hello.h
+  SOURCES
+    src/hello.cc
+  PUBLIC_INCLUDES
+    include
+  PUBLIC_DEPS
+    pw_string
+    zephyr_interface
+)
+```
+
+### The application
+For our main application we'll allocate a `pw::StringBuffer`, generate a welcome message, then log it via
+`PW_LOG_INFO()`. All this can be found in `app/src/main.cc`. The primary CMake file here sets up the project,
+adds the sources, and links the `hello_world` library we created.
+
+We can run this application via:
+```shell
+$ west build -p -b native_sim -t run app/
+```

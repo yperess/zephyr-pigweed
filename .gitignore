@@ -15,3 +15,5 @@ tools/
 
 # Build artifacts
 build/
+out/
+twister-out*/
