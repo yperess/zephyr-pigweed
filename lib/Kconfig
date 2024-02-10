@@ -1,0 +1,10 @@
+# Copyright (c) 2024 Google LLC
+# SPDX-License-Identifier: Apache-2.0
+
+config APP_TRACK_TITLE_MAX_LEN
+  int "Maximum length of a song Track's title string"
+  default 48
+
+config APP_TRACK_ARTIST_NAME_MAX_LEN
+  int "Maximum length of a song Track's artist name"
+  default 48

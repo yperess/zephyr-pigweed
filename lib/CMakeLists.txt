@@ -11,6 +11,9 @@ pw_add_library(hello_world STATIC
   PUBLIC_INCLUDES
     include
   PUBLIC_DEPS
+    pw_containers
+    pw_result
+    pw_status
     pw_string
     zephyr_interface
 )

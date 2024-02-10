@@ -132,3 +132,35 @@ Edit `hello.h` to accept `std::string_view` for both the `greeting` and the `nam
 
 ### Extending tests
 Add more tests to verify that the greeting has both `greeting` and `name`.
+
+## Hash Tables
+Looking up values in an index is one of the primary use cases for hash containers (associative
+containers). The hashed values are used as the keys in hash tables, allowing you to retrieve the
+value using the key as an O(1) operation.
+
+Embedded solutions for O(1) lookup don't currently exist, but we can get close with
+[pw::containers::FlatMap](https://pigweed.dev/pw_containers/#pw-containers-flatmap) which gives us
+O(log _n_) lookup. The one catch is that all the keys have to be inserted into the map at compile
+time.
+
+> New `BUILD` dependencies: `pw_containers`
+
+> NOTE: For this exercise we're going to also use `pw::Status` and `pw::Result`. These come from the
+> CMake libraries `pw_status` and `pw_result` respectively.
+
+### Exercise
+This exercise demonstrates how to utilize Pigweed's `FlatMap`.
+
+#### Developing our Track database
+We've added a new `struct Track` and `class TrackDatabase` to `hello.h`. Using an appropriate hash
+table, add appropriate private member(s) as needed to your `TrackDatabase` to hold your set of
+`Track*` references.
+
+For testing, a static function was added (`app::CannedTracks()`). You may wish to use this function
+to provide some canned track data for testing.
+
+### Extending Tests
+Add some tests for various behaviors:
+
+* Add a test that an empty `TrackDatabase` behaves as expected.
+* Add a test that a `TrackDatabase` that's initialized with data holds those tracks
