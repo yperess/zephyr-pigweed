@@ -4,7 +4,9 @@
 
 #pragma once
 
+#include "pw_containers/filtered_view.h"
 #include "pw_containers/flat_map.h"
+#include "pw_function/function.h"
 #include "pw_result/result.h"
 #include "pw_status/status.h"
 #include "pw_string/string.h"
@@ -29,6 +31,10 @@ template <size_t kArraySize>
 class TrackDatabase {
  public:
   using value_type = ::pw::containers::Pair<int64_t, Track>;
+  using map_type = ::pw::containers::FlatMap<int64_t, Track, kArraySize>;
+  using filter_type = bool(const value_type&);
+  using filtered_view_type =
+      ::pw::containers::FilteredView<map_type, ::pw::Function<filter_type>>;
 
   /// Build a database with a set of default values
   constexpr TrackDatabase(const std::array<value_type, kArraySize>& items)
@@ -49,8 +55,13 @@ class TrackDatabase {
     return &tracks_.at(id);
   }
 
+  /// Find Tracks that have 'name' in their title
+  ///
+  /// The FilteredView that's returned will be valid until the TrackDatabase is
+  /// destroyed
+  filtered_view_type FindTracksByName(std::string_view name) const;
  private:
-  pw::containers::FlatMap<int64_t, Track, kArraySize> tracks_;
+  map_type tracks_;
 };
 
 #include "pw_containers/vector.h"

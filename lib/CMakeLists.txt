@@ -12,6 +12,7 @@ pw_add_library(hello_world STATIC
     include
   PUBLIC_DEPS
     pw_containers
+    pw_function
     pw_result
     pw_status
     pw_string

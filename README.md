@@ -164,3 +164,30 @@ Add some tests for various behaviors:
 
 * Add a test that an empty `TrackDatabase` behaves as expected.
 * Add a test that a `TrackDatabase` that's initialized with data holds those tracks
+
+## Filtered Views
+Having a map is great, but is there a convenient way to search? `pw::container::FilteredView` gives
+us a low-cost solution by using iterators and a predicate. We're going to add a few new types to
+our `TrackDatabase` in order to keep things simple and add a new function signature which will
+return a constant `FilteredView` of the map. We can then use the view to iterate through entries
+which match our search criteria.
+
+> NOTE: While `std::function` isn't great for embedded application, using `pw::Function` from the
+> `pw_function` library gives us a single capture value lambda support that works great in the
+> embedded space.
+
+### Exercise
+We've added a new function to our `TrackDatabase` with the following signature below. Implement it
+to return the `FilterView` that returns all entries containing `name` as a substring.
+
+```c++
+pw::container::FilteredView<map_type, filter_type> FindTracksByName(
+    std::string_view name) const;
+```
+
+### Extending Tests
+Add some tests for the various behaviors:
+
+* Searching for a substring that doesn't exist, returns an empty set
+* Searching for a substring that has exactly 1 match, returns a set with just 1 entry
+* Searching for a substring with multiple matches, returns a set with ALL the entries
