@@ -59,7 +59,12 @@ class TrackDatabase {
   ///
   /// The FilteredView that's returned will be valid until the TrackDatabase is
   /// destroyed
-  filtered_view_type FindTracksByName(std::string_view name) const;
+  filtered_view_type FindTracksByName(std::string_view name) const {
+    auto string = name.data();
+    return filtered_view_type(tracks_, [string](const value_type& value) {
+      return strstr(value.second.title.c_str(), string) != nullptr;
+    });
+  }
  private:
   map_type tracks_;
 };

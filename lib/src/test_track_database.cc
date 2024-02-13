@@ -44,4 +44,24 @@ TEST(TrackDatabase, CannotFindTrackThatIsNotInDatabase) {
   EXPECT_EQ(pw::Status::NotFound(), track.status());
 }
 
+TEST(TrackDatabase, SearchForSongByNameMatchOne) {
+  app::TrackDatabase<5> database(app::CannedTracks());
+  auto query = database.FindTracksByName("Department");
+
+  EXPECT_EQ(size_t{1}, query.size());
+  EXPECT_TRUE(std::all_of(query.begin(), query.end(), [](const auto& v) {
+    return strstr(v.second.title.c_str(), "Department") != nullptr;
+  }));
+}
+
+TEST(TrackDatabase, SearchForSongByNameMatchTwo) {
+  app::TrackDatabase<5> database(app::CannedTracks());
+  auto query = database.FindTracksByName("the");
+
+  EXPECT_EQ(size_t{2}, query.size());
+  EXPECT_TRUE(std::all_of(query.begin(), query.end(), [](const auto& v) {
+    return strstr(v.second.title.c_str(), "the") != nullptr;
+  }));
+}
+
 }  // namespace
