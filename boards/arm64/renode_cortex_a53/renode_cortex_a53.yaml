@@ -1,0 +1,17 @@
+# Copyright (c) 2024 Google LLC, Antmicro
+# SPDX-License-Identifier: Apache-2.0
+
+identifier: renode_cortex_a53
+name: Renode Emulation for Cortex-A53
+type: mcu
+simulation: renode
+simulation_exec: renode
+arch: arm64
+toolchain:
+  - zephyr
+ram: 128
+testing:
+  default: true
+  ignore_tags:
+    - net
+    - bluetooth

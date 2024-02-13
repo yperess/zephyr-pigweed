@@ -1,0 +1,7 @@
+# Copyright (c) 2024 Google LLC, Antmicro
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_RENODE_CORTEX_A53
+	bool "Cortex-A53 Emulation (RENODE)"
+	depends on SOC_QEMU_CORTEX_A53
+	select ARM64

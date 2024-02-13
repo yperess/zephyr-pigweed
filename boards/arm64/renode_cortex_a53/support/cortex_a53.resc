@@ -1,0 +1,15 @@
+# Copyright (c) 2024 Google LLC, Antmicro
+# SPDX-License-Identifier: Apache-2.0
+
+using sysbus
+
+mach create "Cortex A53"
+machine LoadPlatformDescription @platforms/cpus/cortex-a53-gicv3.repl
+
+macro reset
+"""
+    showAnalyzer uart0 Antmicro.Renode.Analyzers.LoggingUartAnalyzer
+    sysbus LoadELF $bin
+"""
+
+runMacro $reset

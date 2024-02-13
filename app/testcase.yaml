@@ -8,6 +8,7 @@ tests:
       - native_sim
       - qemu_riscv64
       - qemu_cortex_a53
+      - renode_cortex_a53
     harness: gtest
     extra_configs:
       - CONFIG_PIGWEED_LOG_ZEPHYR=y
