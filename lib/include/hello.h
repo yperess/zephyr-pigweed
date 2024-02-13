@@ -47,6 +47,8 @@ class TrackDatabase {
               ValueIterator,
               typename filtered_view_type::iterator,
               const Track>(it) {}
+
+    const Track& operator*() const { return this->value().second; }
   };
 
   /// Build a database with a set of default values
@@ -80,7 +82,10 @@ class TrackDatabase {
   }
 
   /// Wrap the filtered view iterator so we can iterate on just the values
-  ValueIterator WrapFilteredView(typename filtered_view_type::iterator filtered_view);
+  ValueIterator WrapFilteredView(typename filtered_view_type::iterator filtered_view) {
+    return ValueIterator(filtered_view);
+  }
+
  private:
   map_type tracks_;
 };

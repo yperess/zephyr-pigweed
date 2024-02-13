@@ -49,9 +49,12 @@ TEST(TrackDatabase, SearchForSongByNameMatchOne) {
   auto query = database.FindTracksByName("Department");
 
   EXPECT_EQ(size_t{1}, query.size());
-  EXPECT_TRUE(std::all_of(query.begin(), query.end(), [](const auto& v) {
-    return strstr(v.second.title.c_str(), "Department") != nullptr;
-  }));
+  EXPECT_TRUE(std::all_of(database.WrapFilteredView(query.begin()),
+                          database.WrapFilteredView(query.end()),
+                          [](const auto& v) {
+                            return strstr(v.title.c_str(), "Department") !=
+                                   nullptr;
+                          }));
 }
 
 TEST(TrackDatabase, SearchForSongByNameMatchTwo) {
@@ -59,9 +62,10 @@ TEST(TrackDatabase, SearchForSongByNameMatchTwo) {
   auto query = database.FindTracksByName("the");
 
   EXPECT_EQ(size_t{2}, query.size());
-  EXPECT_TRUE(std::all_of(query.begin(), query.end(), [](const auto& v) {
-    return strstr(v.second.title.c_str(), "the") != nullptr;
-  }));
+  EXPECT_TRUE(std::all_of(
+      database.WrapFilteredView(query.begin()),
+      database.WrapFilteredView(query.end()),
+      [](const auto& v) { return strstr(v.title.c_str(), "the") != nullptr; }));
 }
 
 }  // namespace
