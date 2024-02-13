@@ -191,3 +191,18 @@ Add some tests for the various behaviors:
 * Searching for a substring that doesn't exist, returns an empty set
 * Searching for a substring that has exactly 1 match, returns a set with just 1 entry
 * Searching for a substring with multiple matches, returns a set with ALL the entries
+
+## WrappedIterator
+You might have noticed our filter returns both the value and key to the map, that's likely not what
+we wanted. Instead, we just want to be able to iterate through the values. We can use
+`pw::container:WrappedIterator` for that. The `WrappedIterator` takes an iterator type and uses both
+the `*` and `->` operators to convert each value type.
+
+### Exercise
+1. We've added a `ValueIterator` class to our `TrackDatabase`. It is your goal to implement the `*`
+   operator such that we return a reference to a `Track` object instead of the `Pair`.
+2. We've provided a `WrapFilteredView` function. You'll need to implement it such that it returns
+   the instance of the `ValueIterator` wrapping the `FilteredView` iterator.
+
+### Extending Tests
+Update our tests to use the wrapped iterator and verify each `Track` without using `Pair::second`.

@@ -6,6 +6,7 @@
 
 #include "pw_containers/filtered_view.h"
 #include "pw_containers/flat_map.h"
+#include "pw_containers/wrapped_iterator.h"
 #include "pw_function/function.h"
 #include "pw_result/result.h"
 #include "pw_status/status.h"
@@ -36,6 +37,18 @@ class TrackDatabase {
   using filtered_view_type =
       ::pw::containers::FilteredView<map_type, ::pw::Function<filter_type>>;
 
+  class ValueIterator : public ::pw::containers::WrappedIterator<
+                            ValueIterator,
+                            typename filtered_view_type::iterator,
+                            const Track> {
+   public:
+    constexpr ValueIterator(typename filtered_view_type::iterator it)
+        : ::pw::containers::WrappedIterator<
+              ValueIterator,
+              typename filtered_view_type::iterator,
+              const Track>(it) {}
+  };
+
   /// Build a database with a set of default values
   constexpr TrackDatabase(const std::array<value_type, kArraySize>& items)
       : tracks_(items) {}
@@ -65,6 +78,9 @@ class TrackDatabase {
       return strstr(value.second.title.c_str(), string) != nullptr;
     });
   }
+
+  /// Wrap the filtered view iterator so we can iterate on just the values
+  ValueIterator WrapFilteredView(typename filtered_view_type::iterator filtered_view);
  private:
   map_type tracks_;
 };
