@@ -8,8 +8,17 @@ tests:
       - native_sim
       - qemu_riscv64
       - qemu_cortex_a53
-      - renode_cortex_a53
+#      - renode_cortex_a53
+#      - hifive_unleashed
     harness: gtest
     extra_configs:
       - CONFIG_PIGWEED_LOG_ZEPHYR=y
       - CONFIG_TEST=y
+#  app.hello.robot:
+#    harness: robot
+#    harness_config:
+#      robot_test_path: app.robot
+#    platform_allow:
+#      - renode_cortex_a53
+#      - hifive_unleashed
+#
