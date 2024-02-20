@@ -206,3 +206,7 @@ the `*` and `->` operators to convert each value type.
 
 ### Extending Tests
 Update our tests to use the wrapped iterator and verify each `Track` without using `Pair::second`.
+
+# Testing with Renode
+
+A separate document in this repository, [RENODE.md](RENODE.md), contains a tutorial on Renode usage with the Zephyr+Pigweed setup.
