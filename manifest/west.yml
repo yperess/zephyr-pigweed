@@ -7,14 +7,14 @@ manifest:
       name: pigweed
       path: third_party/pigweed
       remote: pigweed
-      revision: 05067e2ed6910c2ed28618e643f9600722be1cca
+      revision: main
     - import: true
       name: zephyr
-      path: third_party/pigweed/environment/packages/zephyr
+      path: third_party/zephyr
       remote: zephyr
-      revision: 04fd1c40cc9f72648f2607be8a18a166242484e5
+      revision: main
   remotes:
     - name: pigweed
-      url-base: git@github.com:google/pigweed.git
+      url-base: git@github.com:google
     - name: zephyr
-      url-base: sso://pigweed/third_party/github/zephyrproject-rtos/zephyr
+      url-base: git@github.com:zephyrproject-rtos

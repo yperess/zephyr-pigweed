@@ -1,0 +1,44 @@
+{
+  "pw": {
+    "pw_cli": {
+      "plugins": {
+        "ide": {
+          "module": "pw_ide.__main__",
+          "function": "main"
+        },
+        "package": {
+          "module": "pw_package.pigweed_packages",
+          "function": "main"
+        }
+      }
+    },
+    "pw_env_setup": {
+      "relative_pigweed_root": "third_party/pigweed",
+      "cipd_package_files": [
+        "cipd.json",
+        "third_party/pigweed/pw_env_setup/py/pw_env_setup/cipd_setup/default.json",
+        "third_party/pigweed/pw_env_setup/py/pw_env_setup/cipd_setup/cmake.json",
+        "third_party/pigweed/pw_env_setup/py/pw_env_setup/cipd_setup/pigweed.json",
+        "third_party/pigweed/pw_env_setup/py/pw_env_setup/cipd_setup/python.json"
+      ],
+      "project_actions": [
+        {
+          "import_path": "pw_env_setup",
+          "module_name": "zephyr_sdk_actions"
+        }
+      ],
+      "virtualenv": {
+        "gn_root": ".",
+        "gn_targets": [
+          ":python.install"
+        ],
+        "requirements": [
+          "third_party/zephyr/scripts/requirements.txt"
+        ],
+        "pip_install_find_links": [
+          "${PW_PROJECT_ROOT}/pip_cache"
+        ]
+      }
+    }
+  }
+}

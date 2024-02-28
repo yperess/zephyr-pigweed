@@ -1,0 +1,8 @@
+config_title: pw_ide
+
+compdb_gen_cmd: "west build -p --cmake-only -b native_sim app"
+compdb_search_paths:
+  - "build/"
+  - "twister-out/"
+# TODO Add target_filter list of globs to block targets from being added
+# TODO Add regex like feature to compdb_search_paths so I can do "twister-out*/"

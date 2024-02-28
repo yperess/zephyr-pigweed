@@ -1,0 +1,36 @@
+import("//build_overrides/pigweed.gni")
+
+import("$dir_pigweed/pw_build/python.gni")
+import("$dir_pigweed/pw_build/python_dist.gni")
+import("$dir_pigweed/pw_build/python_venv.gni")
+
+pw_python_group("python") {
+  python_deps = [
+    ":pip_install_project_tools",
+  ]
+}
+
+_all_python_packages = [
+  "$dir_pw_env_setup:core_pigweed_python_packages",
+]
+
+pw_python_venv("project_build_venv") {
+  path = "$root_build_dir/python-venv"
+  constraints = pw_build_PIP_CONSTRAINTS
+  requirements = pw_build_PIP_REQUIREMENTS
+  source_packages = _all_python_packages
+}
+
+pw_python_distribution("generate_project_python_distribution") {
+  packages = _all_python_packages
+  generate_setup_cfg = {
+    name = "project-tools"
+    version = "0.0.1"
+    append_date_to_version = true
+    include_default_pyproject_file = true
+  }
+}
+
+pw_python_pip_install("pip_install_project_tools") {
+  packages = [ ":generate_project_python_distribution" ]
+}

@@ -5,7 +5,13 @@
 .west/
 
 # IDE specific
+.cache/
 .idea/
+.pw_ide/
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json
 
 # Checked out by West
 bootloader/
@@ -14,6 +20,9 @@ third_party/
 tools/
 
 # Build artifacts
-build/
+build*/
 out/
 twister-out*/
+
+# Environment
+environment/
