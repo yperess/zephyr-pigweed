@@ -1,0 +1,10 @@
+buildconfig = "//BUILDCONFIG.gn"
+import("//build_overrides/pigweed.gni")
+default_args = {
+  pw_build_PIP_CONSTRAINTS = [
+  # Pigweed upstream constraints
+    "$dir_pw_env_setup/py/pw_env_setup/virtualenv_setup/constraint.list",
+  ]
+  # Default gn build virtualenv target.
+  pw_build_PYTHON_BUILD_VENV = "//:project_build_venv"
+}

@@ -1,0 +1,19 @@
+{
+  "packages": [
+    {
+      "path": "infra/3pp/tools/zephyr_sdk/${platform}",
+      "subdir": "zephyr_sdk",
+      "platforms": [
+        "mac-amd64",
+        "mac-arm64",
+        "linux-amd64",
+        "linux-arm64",
+        "windows-amd64"
+      ],
+      "tags": [
+        "latest"
+      ],
+      "version_file": ".versions/zephyr_sdk.cipd_version"
+    }
+  ]
+}

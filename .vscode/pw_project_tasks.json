@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "process",
+      "label": "Zephyr: run all tests",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": [
+        "-m",
+        "pw_ide.activate",
+        "-x 'west twister -cvi -T ${input:testTargetDir}'",
+      ],
+      "presentation": {
+        "focus": true,
+      },
+      "problemMatcher": [],
+    },
+  ],
+  "inputs": [
+    {
+      "type": "pickDirectory",
+      "id": "testTargetDir",
+      "description": "Directory",
+      "options": [],
+    },
+  ],
+}
