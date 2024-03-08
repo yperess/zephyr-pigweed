@@ -1,3 +1,6 @@
 [submodule "third_party/zephyr"]
 	path = third_party/zephyr
 	url = git@github.com:zephyrproject-rtos/zephyr.git
+[submodule "third_party/pigweed"]
+	path = third_party/pigweed
+	url = git@github.com:google/pigweed.git
