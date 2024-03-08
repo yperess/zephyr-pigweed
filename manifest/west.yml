@@ -12,9 +12,9 @@ manifest:
       name: zephyr
       path: third_party/zephyr
       remote: zephyr
-      revision: main
+      revision: zephyr-bazel
   remotes:
     - name: pigweed
-      url-base: git@github.com:google
+      url-base: git@github.com:yperess
     - name: zephyr
-      url-base: git@github.com:zephyrproject-rtos
+      url-base: git@github.com:yperess
