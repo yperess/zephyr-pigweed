@@ -3,4 +3,4 @@
 	url = git@github.com:zephyrproject-rtos/zephyr.git
 [submodule "third_party/pigweed"]
 	path = third_party/pigweed
-	url = git@github.com:google/pigweed.git
+	url = git@github.com:yperess/pigweed.git
