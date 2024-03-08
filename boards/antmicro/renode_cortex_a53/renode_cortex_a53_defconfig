@@ -1,7 +1,7 @@
 # Copyright (c) 2024 Google LLC, Antmicro
 # SPDX-License-Identifier: Apache-2.0
 
-CONFIG_SOC_QEMU_CORTEX_A53=y
+#CONFIG_SOC_QEMU_CORTEX_A53=y
 CONFIG_BOARD_RENODE_CORTEX_A53=y
 CONFIG_ARM_ARCH_TIMER=y
 

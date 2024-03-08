@@ -1,0 +1,6 @@
+#
+board:
+  name: renode_cortex_a53
+  vendor: antmicro
+  socs:
+    - name: qemu_cortex_a53

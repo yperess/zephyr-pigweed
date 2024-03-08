@@ -3,5 +3,5 @@
 
 config BOARD_RENODE_CORTEX_A53
 	bool "Cortex-A53 Emulation (RENODE)"
-	depends on SOC_QEMU_CORTEX_A53
+	select SOC_QEMU_CORTEX_A53
 	select ARM64
